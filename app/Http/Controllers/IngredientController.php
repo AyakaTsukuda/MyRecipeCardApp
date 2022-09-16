@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RecipeStoreRequest;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Inertia\Inertia;
 
-class RecipeController extends Controller
+class IngredientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::all();
-        return Inertia::render("Recipes/Index", ['recipes'=>$recipes]);
+        //
     }
 
     /**
@@ -26,9 +22,9 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Recipe $recipe)
     {
-        return Inertia::render("Recipes/Create");
+        dd("ok");
     }
 
     /**
@@ -37,11 +33,9 @@ class RecipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RecipeStoreRequest $request)
+    public function store(Request $request)
     {
-        $recipe = Recipe::create($request->all());
-        return Redirect::route('ingredients.create', $recipe);
-        // return redirect()->route('ingredients.create', ['recipe_id' => $recipe->id]);
+        //
     }
 
     /**
