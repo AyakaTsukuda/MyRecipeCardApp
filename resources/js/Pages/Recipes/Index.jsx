@@ -7,8 +7,6 @@ export default function Index(props) {
 
     const { recipes } =  usePage().props;
 
-    console.log(recipes);
-
     return (
         <AuthenticatedLayout
             auth={props.auth}
@@ -20,7 +18,7 @@ export default function Index(props) {
             <div>
                 <h2>Recipe Page</h2>
                 <div>
-                    {recipes.map((recipe, index)=>
+                    {recipes && recipes.map((recipe, index)=>
                         <div key={index}>
                             <div>{recipe.name}</div>
                         </div>

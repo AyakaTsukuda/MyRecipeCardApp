@@ -17,8 +17,8 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::all();
-        return Inertia::render("Recipes/Index", ['recipes'=>$recipes]);
+        $recipe = Recipe::all();
+        return Inertia::render("Recipes/Index", ['recipe'=>$recipe]);
     }
 
     /**
@@ -40,8 +40,7 @@ class RecipeController extends Controller
     public function store(RecipeStoreRequest $request)
     {
         $recipe = Recipe::create($request->all());
-        return Redirect::route('ingredients.create', $recipe);
-        // return redirect()->route('ingredients.create', ['recipe_id' => $recipe->id]);
+        return redirect()->route('ingredients.create', ['recipe'=>$recipe]);
     }
 
     /**

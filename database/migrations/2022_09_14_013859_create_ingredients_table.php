@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('recipe_id', FALSE)->index('recipe_id');
             $table->unsignedBigInteger('item_id', FALSE)->index('item_id');
+            $table->unsignedBigInteger('type_id', FALSE)->index('type_id');
             $table->text('quantity');
             $table->text('unit');
             $table->timestamps();

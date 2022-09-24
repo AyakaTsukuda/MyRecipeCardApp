@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class IngredientController extends Controller
 {
@@ -22,9 +23,9 @@ class IngredientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Recipe $recipe)
+    public function create(Request $request)
     {
-        dd("ok");
+        return Inertia::render('Ingredients/Create', ['recipe' => Recipe::find($request->recipe)]);
     }
 
     /**
