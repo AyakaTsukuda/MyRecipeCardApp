@@ -44,6 +44,8 @@ export default function Create(props) {
         // Do Nothing...
     }
 
+
+
     /* add form, item_id into input area and state set */
     function handleItemInput(item){
         setItemId(item.id);
@@ -78,9 +80,20 @@ export default function Create(props) {
         setUnit("");
     }
 
+    /* line Delete btn on click action */
+    function handleItemDelete(del_item_key){
+        let list = [];
+        ingredients.map((item) => {
+            item.key !== del_item_key && list.push(item);
+        });
+        setIngredients(list);
+    }
+
     /* form submit action */
     function handleSubmit(e) {
         e.preventDefault();
+        // setData(ingredients);
+        // post(route("ingredients.store"));
     }
 
     return (
@@ -183,21 +196,27 @@ export default function Create(props) {
                             />
                             <input
                                 className="hidden"
+                                name="item_id[]"
                                 value={item.item_id}
                                 readOnly
                             />
                             <input
+                                name="quantity[]"
                                 value={item.quantity}
                                 readOnly
                             />
                             <input
+                                name="unit[]"
                                 value={item.unit}
                                 readOnly
                             />
                             <button
-                                type="button">
+                                type="button"
+                                onClick={()=>handleItemDelete(item.key)}>
                                     -
                             </button>
+                            <input type="hidden" name="recipe_id[]" value={recipe.id}></input>
+                            <input type="hidden" name="type_id[]" value="1"/>
                     </div>
                 )}
 

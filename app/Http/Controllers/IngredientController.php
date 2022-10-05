@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Http\Requests\IngredientRequest;
 
 class IngredientController extends Controller
 {
@@ -34,9 +35,9 @@ class IngredientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IngredientRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**
