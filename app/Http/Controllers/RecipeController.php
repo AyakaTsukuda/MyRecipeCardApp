@@ -40,7 +40,7 @@ class RecipeController extends Controller
     public function store(RecipeStoreRequest $request)
     {
         $recipe = Recipe::create($request->all());
-        return redirect()->route('ingredients.create', ['recipe'=>$recipe]);
+        return redirect()->route('recipes.edit', ['recipe'=>$recipe]);
     }
 
     /**
@@ -62,7 +62,7 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Inertia::render('Recipes/Edit', ['recipe' => Recipe::find($id)]);
     }
 
     /**
@@ -74,7 +74,8 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // @todo : ValidationかませてRequest作って。
+        // Update終わったらRecipes.editにリダイレクトして！！
     }
 
     /**

@@ -25,16 +25,16 @@ export default function Create(props) {
 
             <form onSubmit={handleSubmit}>
                 <div>Recipe Title</div>
-                <input 
+                <input
                     type="text"
                     value={data.name}
                     onChange={(e) =>
                         setData("name", e.target.value)
-                    } 
+                    }
                 />
                 <button>Save</button>
             </form>
-            
+
         </AuthenticatedLayout>
     );
 }
