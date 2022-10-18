@@ -52,7 +52,10 @@ export default function IngredientsCreate({recipe, type}) {
     function handleSubmit(e){
         e.preventDefault(e);
         post(route("ingredients.store"));
-
+        setSearch("");
+        setData("item_id","");
+        setData("quantity","");
+        setData("unit","");
     }
 
     return (

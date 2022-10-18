@@ -2,6 +2,7 @@ import React from 'react'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import RecipeTitle from '@/Components/RecipeTitle';
 import IngredientsCreate from '@/Components/IngredientsCreate';
+import Ingredient from '@/Components/Ingredient';
 import { Head, usePage } from '@inertiajs/inertia-react';
 
 export default function Edit(props) {
@@ -18,6 +19,11 @@ export default function Edit(props) {
 
         <RecipeTitle recipe={recipe} />
         <IngredientsCreate recipe={recipe} type={1} />
+
+        {recipe.ingredients.map((ingredient, index) =>
+            <Ingredient key={index} ingredient={ingredient}/>
+        )}
+
 
         </AuthenticatedLayout>
     )
