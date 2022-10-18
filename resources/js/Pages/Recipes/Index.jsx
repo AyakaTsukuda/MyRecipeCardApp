@@ -5,23 +5,26 @@ import { Head, usePage, Link } from '@inertiajs/inertia-react';
 
 export default function Index(props) {
 
-    // const { posts } = usePage().props
-
-    // function destroy(e) {
-    //     if (confirm("Are you sure you want to delete this user?")) {
-    //         Inertia.delete(route("posts.destroy", e.currentTarget.id));
-    //     }
-    // }
+    const { recipes } =  usePage().props;
 
     return (
         <AuthenticatedLayout
             auth={props.auth}
             errors={props.errors}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Posts</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Recipe</h2>}
         >
-            <Head title="Posts" />
+            <Head title="Recipe" />
 
-            <div> Yup
+            <div>
+                <h2>Recipe Page</h2>
+                <div>
+                    {recipes && recipes.map((recipe, index)=>
+                        <div key={index}>
+                            <div>{recipe.name}</div>
+                        </div>
+                    )}
+                </div>
+                <a href={route('recipes.create')}>Recipe Create</a>
             </div>
         </AuthenticatedLayout>
     );

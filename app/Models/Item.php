@@ -10,15 +10,6 @@ class Item extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
     ];
-
-    protected $with = [
-        'recipes'
-    ];
-
-
-    public function recipes(){
-        return $this->hasManyThrough(Recipe::class, Ingredient::class);
-    }
 }

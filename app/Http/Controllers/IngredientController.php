@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RecipeRequest;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use App\Http\Requests\IngredientRequest;
 
-class RecipeController extends Controller
+class IngredientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipe = Recipe::all();
-        return Inertia::render("Recipes/Index", ['recipe'=>$recipe]);
+        //
     }
 
     /**
@@ -26,9 +24,9 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return Inertia::render("Recipes/Create");
+        return Inertia::render('Ingredients/Create', ['recipe' => Recipe::find($request->recipe)]);
     }
 
     /**
@@ -37,10 +35,9 @@ class RecipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RecipeRequest $request)
+    public function store(IngredientRequest $request)
     {
-        $recipe = Recipe::create($request->all());
-        return redirect()->route('recipes.edit', ['recipe'=>$recipe]);
+        dd($request);
     }
 
     /**
@@ -62,7 +59,7 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
-        return Inertia::render('Recipes/Edit', ['recipe' => Recipe::find($id)]);
+        //
     }
 
     /**
@@ -72,12 +69,9 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RecipeRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $recipe = Recipe::find($id);
-        $recipe->update(['name', $request->name]);
-
-        return redirect()->action([RecipeController::class, 'edit'], ['recipe'=>$recipe]);
+        //
     }
 
     /**

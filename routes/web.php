@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RecipeController;
 use App\Models\Post;
@@ -19,6 +20,9 @@ use Inertia\Inertia;
 */
 
 Route::resource('posts', PostController::class);
+
+// Route::get('ingredients/{recipe_id}/create', [IngredientController::class, 'create'])->name('Ingredients.create');
+Route::resource('ingredients', IngredientController::class);
 
 Route::resource('recipes', RecipeController::class);
 

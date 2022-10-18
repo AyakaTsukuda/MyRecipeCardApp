@@ -10,23 +10,8 @@ class Ingredient extends Model
     use HasFactory;
 
     protected $fillable = [
-        'recipe_id',
-        'item_id',
         'quantity',
         'unit',
-        'seasoning_flag'
+        'type_id'
     ];
-
-    protected $with = [
-        'item',
-        'recipe'
-    ];
-
-    public function item(){
-        return $this->hasOne(Item::class);
-    }
-
-    public function recipe(){
-        return $this->belongsTo(Recipe::class);
-    }
 }
