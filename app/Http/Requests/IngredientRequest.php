@@ -24,7 +24,11 @@ class IngredientRequest extends FormRequest
     public function rules()
     {
         return [
-            // @todo : add post data check
+            'recipe_id' => 'required',
+            'type_id'   => 'required',
+            'item_id'   => 'required',
+            'quantity'  => 'required',
+            'unit'      => 'required'
         ];
     }
 }

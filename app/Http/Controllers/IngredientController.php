@@ -6,6 +6,7 @@ use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Http\Requests\IngredientRequest;
+use App\Models\Ingredient;
 
 class IngredientController extends Controller
 {
@@ -24,10 +25,10 @@ class IngredientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
-    {
-        return Inertia::render('Ingredients/Create', ['recipe' => Recipe::find($request->recipe)]);
-    }
+    // public function create(Request $request)
+    // {
+    //     return Inertia::render('Ingredients/Create', ['recipe' => Recipe::find($request->recipe)]);
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -37,7 +38,8 @@ class IngredientController extends Controller
      */
     public function store(IngredientRequest $request)
     {
-        dd($request);
+        Ingredient::create($request->all());
+        return redirect()->route('recipes.edit', ['recipe'=>Recipe::find($request->recipe_id)]);
     }
 
     /**

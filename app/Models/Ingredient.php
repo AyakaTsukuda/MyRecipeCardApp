@@ -10,8 +10,10 @@ class Ingredient extends Model
     use HasFactory;
 
     protected $fillable = [
+        'recipe_id',
+        'item_id',
+        'type_id',
         'quantity',
         'unit',
-        'type_id'
     ];
 }

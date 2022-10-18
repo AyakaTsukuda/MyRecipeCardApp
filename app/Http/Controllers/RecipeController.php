@@ -75,7 +75,8 @@ class RecipeController extends Controller
     public function update(RecipeRequest $request, $id)
     {
         $recipe = Recipe::find($id);
-        $recipe->update(['name', $request->name]);
+        $recipe->name = $request->name;
+        $recipe->save();
 
         return redirect()->action([RecipeController::class, 'edit'], ['recipe'=>$recipe]);
     }

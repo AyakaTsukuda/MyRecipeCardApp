@@ -1,6 +1,7 @@
 import React from 'react'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import RecipeTitle from '@/Components/RecipeTitle';
+import IngredientsCreate from '@/Components/IngredientsCreate';
 import { Head, usePage } from '@inertiajs/inertia-react';
 
 export default function Edit(props) {
@@ -15,9 +16,8 @@ export default function Edit(props) {
         >
         <Head title="Recipe Edit" />
 
-
         <RecipeTitle recipe={recipe} />
-
+        <IngredientsCreate recipe={recipe} type={1} />
 
         </AuthenticatedLayout>
     )
