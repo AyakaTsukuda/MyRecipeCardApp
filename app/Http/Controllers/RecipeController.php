@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RecipeStoreRequest;
+use App\Http\Requests\RecipeRequest;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -37,7 +37,7 @@ class RecipeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RecipeStoreRequest $request)
+    public function store(RecipeRequest $request)
     {
         $recipe = Recipe::create($request->all());
         return redirect()->route('recipes.edit', ['recipe'=>$recipe]);
@@ -72,10 +72,12 @@ class RecipeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RecipeRequest $request, $id)
     {
-        // @todo : ValidationかませてRequest作って。
-        // Update終わったらRecipes.editにリダイレクトして！！
+        $recipe = Recipe::find($id);
+        $recipe->update(['name', $request->name]);
+
+        return redirect()->action([RecipeController::class, 'edit'], ['recipe'=>$recipe]);
     }
 
     /**

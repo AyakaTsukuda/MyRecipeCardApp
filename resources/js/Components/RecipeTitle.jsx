@@ -3,7 +3,7 @@ import { useForm } from '@inertiajs/inertia-react';
 
 export default function RecipeTitle({recipe}) {
 
-    const { data, setData } = useForm({
+    const { data, setData, put } = useForm({
         name: recipe.name || "",
     });
 
@@ -14,6 +14,7 @@ export default function RecipeTitle({recipe}) {
 
     return (
         <form onSubmit={handleSubmit}>
+            <label>Recipe Title</label>
             <input
                 type="text"
                 name="name"
